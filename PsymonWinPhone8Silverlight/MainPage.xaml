@@ -1,0 +1,47 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Psymon.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI" Loaded="PhoneApplicationPage_Loaded" Unloaded="PhoneApplicationPage_Unloaded" BackKeyPress="PhoneApplicationPage_BackKeyPress">
+
+    <Canvas Height="688" Name="LayoutRoot">
+        <!-- Buttons are ordered by Name, so tags must match name ordering Blue=0, Cyan=2, Green=3, Magenta=4, Red=5, Yellow=5-->
+        <Button Canvas.Left="20" Canvas.Top="117" Content="1" Height="160" Name="RedButton" Width="220" Background="Red" Click="Button_Click" IsEnabled="{Binding RedButtonState}" Tag="4" FontSize="40" />
+        <Button Canvas.Left="240" Canvas.Top="117" Content="2" Height="160" Name="GreenButton" Width="220" Background="Green" Click="Button_Click" IsEnabled="{Binding GreenButtonState}" Tag="2" FontSize="40" />
+        <Button Canvas.Left="20" Canvas.Top="277" Content="3" Height="160" Name="BlueButton" Width="220" Click="Button_Click" Background="Blue" IsEnabled="{Binding BlueButtonState}" Tag="0" FontSize="40" />
+        <Button Canvas.Left="240" Canvas.Top="277" Content="4" Height="160" Name="CyanButton" Width="220" Background="Cyan" Click="Button_Click" IsEnabled="{Binding CyanButtonState}" Tag="1" FontSize="40" />
+        <Button Canvas.Left="20" Canvas.Top="437" Content="5" Height="160" Name="MagentaButton" Width="220" Background="Magenta" Click="Button_Click" IsEnabled="{Binding MagentaButtonState}" Tag="3" FontSize="40" />
+        <Button Canvas.Left="240" Canvas.Top="437" Content="6" Height="160" Name="YellowButton" Width="220" Background="Yellow" Click="Button_Click" IsEnabled="{Binding YellowButtonState}" Tag="5" FontSize="40" />
+        <TextBlock Canvas.Top="50" Height="30" Name="OutputLabel" Text="" Width="480" FontSize="26.667" />
+        <TextBlock Canvas.Top="10" Height="30" Name="InfoLabel" Text="" Width="130" FontSize="26.667" />
+        <ProgressBar Canvas.Top="90" Height="16" Name="MoveTimeProgress" Width="480" />
+        <my:AdControl Canvas.Left="0" Canvas.Top="610" Height="80" Name="AdControl" Width="480" ApplicationId="f54e82c8-618a-4178-9997-86f0f0ab4874" AdUnitId="10011505" />
+        <TextBlock Canvas.Top="10" Height="30" x:Name="ScoreLabel" Text="" Width="200" FontSize="26.667" Canvas.Left="280" HorizontalAlignment="Right" Foreground="Yellow" TextAlignment="Right"/>
+        <TextBlock Canvas.Top="10" Height="30" x:Name="HighScoreLabel" Text="" Width="130" FontSize="26.667" Canvas.Left="167" HorizontalAlignment="Center" Foreground="Purple" TextAlignment="Center" />
+            
+    </Canvas>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="PlayButton" IconUri="/Content/Images/play_button_light.png" Text="Play" Click="PlayButton_Click"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="ReplayButton" IconUri="/Content/Images/replay_button_light.png" Text="Replay" Click="ReplayButton_Click"></shell:ApplicationBarIconButton>
+            <!--<shell:ApplicationBarIconButton x:Name="ResetButton" IconUri="/Content/Images/reset_button_light.png" Text="Reset" Click="ResetButton_Click"></shell:ApplicationBarIconButton>-->
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Easy" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="Hard" Click="ApplicationBarMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem Text="Help" Click="ApplicationBarMenuHelp_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>   
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
+</phone:PhoneApplicationPage>
